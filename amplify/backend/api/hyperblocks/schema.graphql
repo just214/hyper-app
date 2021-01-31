@@ -1,0 +1,8 @@
+type Block @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String!
+  notes: String
+  url: AWSURL
+  userID: ID
+}
+ 

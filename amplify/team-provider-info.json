@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-hyperblocks-dev-150119-authRole",
+      "UnauthRoleArn": "arn:aws:iam::631215680363:role/amplify-hyperblocks-dev-150119-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::631215680363:role/amplify-hyperblocks-dev-150119-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-hyperblocks-dev-150119-deployment",
+      "UnauthRoleName": "amplify-hyperblocks-dev-150119-unauthRole",
+      "StackName": "amplify-hyperblocks-dev-150119",
+      "StackId": "arn:aws:cloudformation:us-east-1:631215680363:stack/amplify-hyperblocks-dev-150119/98b53cb0-61a3-11eb-9e95-0afa5528cb21",
+      "AmplifyAppId": "d3nvl14pimxyhj"
+    },
+    "categories": {
+      "auth": {
+        "hyperblocks": {}
+      }
+    }
+  }
+}
