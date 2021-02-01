@@ -36,7 +36,7 @@ export function SettingsLink(props: SettingsLink) {
           </View>
           <View style={styles.end}>
             <Text style={styles.value}>{props.value}</Text>
-            <Icon name="chevron-right" size="lg" color="#ccc" />
+            <Icon name="angle-right" size="lg" color="#ccc" />
           </View>
         </View>
       </TouchableHighlight>

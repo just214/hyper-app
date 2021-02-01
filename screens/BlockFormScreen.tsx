@@ -1,14 +1,20 @@
 import * as React from "react";
-import { Button, StyleSheet, KeyboardAvoidingView } from "react-native";
+import {
+  Button,
+  StyleSheet,
+  KeyboardAvoidingView,
+  TouchableOpacity,
+} from "react-native";
 import { View } from "../components/View";
-import { TextInput } from "../components/TextInput";
 import { Card } from "../components/Card";
 import { SettingsLink } from "../components/SettingsLink";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { AddButton } from "../components/AddButton";
 import { TimerForm } from "../components/form/TimerForm";
 import { DueDateTimeForm } from "../components/form/DueDateTimeForm";
 import { TextInputControl } from "../components/form/TextInputControl";
+import { Icon } from "../components/Icon";
+import { Text } from "../components/Text";
 import { padNumber } from "../utils";
 
 function generateTimerValue(hours: number, minutes: number) {
@@ -141,7 +147,12 @@ export function BlockFormScreen({ navigation }: any) {
                   flexDirection: "row",
                 }}
               >
-                <Button title="< Back" onPress={() => setActiveOption(null)} />
+                <TouchableOpacity onPress={() => setActiveOption(null)}>
+                  <View style={{ flexDirection: "row" }}>
+                    <Icon name="angle-left" />
+                    <Text>Back</Text>
+                  </View>
+                </TouchableOpacity>
               </View>
               <View
                 style={{

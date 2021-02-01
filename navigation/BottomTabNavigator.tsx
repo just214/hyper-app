@@ -7,6 +7,7 @@ import ScheduleScreen from "../screens/ScheduleScreen";
 import InsightsScreen from "../screens/InsightsScreen";
 import BlocksScreen from "../screens/BlocksScreen";
 import SettingsScreen from "../screens/SettingsScreen";
+import { FontAwesome5 } from "@expo/vector-icons";
 import {
   BottomTabParamList,
   ScheduleParamList,
@@ -30,7 +31,7 @@ export default function BottomTabNavigator() {
         component={ScheduleNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <TabBarIcon name="calendar" color={color} />
+            <TabBarIcon name="calendar-week" color={color} />
           ),
         }}
       />
@@ -54,7 +55,9 @@ export default function BottomTabNavigator() {
         name="Settings"
         component={SettingsNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="cog" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="sliders-h" color={color} />
+          ),
         }}
       />
     </BottomTab.Navigator>
@@ -64,7 +67,7 @@ export default function BottomTabNavigator() {
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
 function TabBarIcon(props: {
-  name: React.ComponentProps<typeof Ionicons>["name"];
+  name: React.ComponentProps<typeof FontAwesome5>["name"];
   color: string;
 }) {
   return <Icon size="xl" style={{ marginBottom: -3 }} {...props} />;

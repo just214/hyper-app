@@ -1,7 +1,6 @@
 import React from "react";
 import { StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { Ionicons } from "@expo/vector-icons";
 import { View } from "../components/View";
 import { Icon } from "../components/Icon";
 

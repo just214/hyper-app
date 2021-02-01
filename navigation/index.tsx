@@ -55,7 +55,7 @@ function RootNavigator() {
           headerLeft: ({ onPress, ...rest }) => (
             <Button {...rest} title="Cancel" onPress={onPress as any} />
           ),
-          headerRight: () => <Button title="Add" onPress={() => {}} />,
+          headerRight: () => <Button title="plus" onPress={() => {}} />,
         }}
       />
     </Stack.Navigator>

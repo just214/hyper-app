@@ -14,15 +14,15 @@ export type IconProps = {
   name?: string;
   size?: keyof typeof sizeMap;
   color?: string;
-  style?: React.CSSProperties;
+  style?: {};
 } & ThemeProps;
 
 export function Icon(props: IconProps) {
   const {
-    style,
+    style = {},
     lightColor,
     darkColor,
-    name = "plus",
+    name = "map",
     size = "md",
     color,
     ...otherProps
@@ -32,7 +32,7 @@ export function Icon(props: IconProps) {
     color || applyThemeColor({ light: lightColor, dark: darkColor }, "text");
   return (
     <FontAwesome5
-      name={name}
+      name={name as any}
       size={sizeMap[size]}
       style={[{ color: textColor }, style]}
       {...otherProps}
