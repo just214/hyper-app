@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text as DefaultText } from "react-native";
+import { ColorPropType, Text as DefaultText } from "react-native";
 
 import type { ThemeProps } from "../types";
 import { useTheme } from "../hooks/useTheme";
@@ -19,8 +19,10 @@ export function Text(props: TextProps) {
   const { style, lightColor, darkColor, size = "md", ...otherProps } = props;
   const { applyThemeColor } = useTheme();
   const color = applyThemeColor({ light: lightColor, dark: darkColor }, "text");
-
+  console.log("COLOR", color);
   const fontSize = sizeMap[size];
 
-  return <DefaultText style={[{ color, fontSize }, style]} {...otherProps} />;
+  return (
+    <DefaultText style={[{ color: color, fontSize }, style]} {...otherProps} />
+  );
 }

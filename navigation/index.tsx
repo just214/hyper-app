@@ -5,7 +5,7 @@ import {
 } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
-import { ColorSchemeName } from "react-native";
+import { ColorSchemeName, Platform } from "react-native";
 
 import NotFoundScreen from "../screens/NotFoundScreen";
 import { RootStackParamList } from "../types";
@@ -33,6 +33,7 @@ export function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
 const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
+  // console.log(Platform);
   return (
     <Stack.Navigator screenOptions={{ headerShown: true }} mode="modal">
       <Stack.Screen
@@ -40,6 +41,7 @@ function RootNavigator() {
         component={BottomTabNavigator}
         options={{ headerShown: false }}
       />
+
       <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}
@@ -49,13 +51,15 @@ function RootNavigator() {
       <Stack.Screen
         name="BlockForm"
         component={BlockFormScreen}
-        options={{
-          headerTitle: "Add a Block",
-          // headerBackTitle: "Cancel",
-          headerLeft: ({ onPress, ...rest }) => (
-            <Button {...rest} title="Cancel" onPress={onPress as any} />
-          ),
-          headerRight: () => <Button title="plus" onPress={() => {}} />,
+        options={(props) => {
+          return {
+            headerTitle: "Add a Block",
+            // headerBackTitle: "Cancel",
+            headerLeft: ({ onPress, ...rest }) => (
+              <Button {...rest} title="Cancel" onPress={onPress as any} />
+            ),
+            headerRight: () => <Button title="Add" onPress={() => {}} />,
+          };
         }}
       />
     </Stack.Navigator>

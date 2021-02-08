@@ -15,6 +15,7 @@ export const TextInputControl = (props: TextInputControlProps) => {
           onBlur={onBlur}
           onChangeText={(value) => onChange(value)}
           value={value}
+          placeholderTextColor="#838383"
           {...rest}
         />
       )}

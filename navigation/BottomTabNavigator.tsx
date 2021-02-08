@@ -2,10 +2,11 @@ import { Icon } from "../components/Icon";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
-import useColorScheme from "../hooks/useColorScheme";
+import { useTheme } from "../hooks/useTheme";
 import ScheduleScreen from "../screens/ScheduleScreen";
 import InsightsScreen from "../screens/InsightsScreen";
 import BlocksScreen from "../screens/BlocksScreen";
+import ThemeSettingsScreen from "../screens/ThemeSettingsScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import { FontAwesome5 } from "@expo/vector-icons";
 import {
@@ -15,16 +16,25 @@ import {
   InsightsParamList,
   SettingsParamList,
 } from "../types";
+import { View } from "../components/View";
+
+// You can explore the built-in icon families and icons on the web at:
+// https://icons.expo.fyi/
+function TabBarIcon(props: {
+  name: React.ComponentProps<typeof FontAwesome5>["name"];
+  color: string;
+}) {
+  return <Icon size="xl" style={{ marginBottom: -3 }} {...props} />;
+}
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
-
+  const { theme } = useTheme();
   return (
     <BottomTab.Navigator
       initialRouteName="Schedule"
-      // tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
+      tabBarOptions={{ activeTintColor: theme.primary }}
     >
       <BottomTab.Screen
         name="Schedule"
@@ -62,15 +72,6 @@ export default function BottomTabNavigator() {
       />
     </BottomTab.Navigator>
   );
-}
-
-// You can explore the built-in icon families and icons on the web at:
-// https://icons.expo.fyi/
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome5>["name"];
-  color: string;
-}) {
-  return <Icon size="xl" style={{ marginBottom: -3 }} {...props} />;
 }
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
@@ -121,11 +122,17 @@ const SettingsStack = createStackNavigator<SettingsParamList>();
 
 function SettingsNavigator() {
   return (
-    <SettingsStack.Navigator>
+    <SettingsStack.Navigator initialRouteName="SettingsScreen">
       <SettingsStack.Screen
         name="SettingsScreen"
         component={SettingsScreen}
         options={{ headerTitle: "Settings" }}
+      />
+
+      <SettingsStack.Screen
+        name="ThemeSettingsScreen"
+        component={ThemeSettingsScreen}
+        options={{ headerTitle: "ThemeSettingsScreen" }}
       />
     </SettingsStack.Navigator>
   );

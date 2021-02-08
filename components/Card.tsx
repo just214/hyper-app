@@ -11,7 +11,7 @@ export function Card(props: CardProps) {
   const { applyThemeColor } = useTheme();
   const backgroundColor = applyThemeColor(
     { light: lightColor, dark: darkColor },
-    "altBackground"
+    "background"
   );
 
   return (

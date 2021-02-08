@@ -1,27 +1,28 @@
 import * as React from "react";
 import { StyleSheet, TouchableHighlight } from "react-native";
-import { Text } from "../components/Text";
-import { View } from "../components/View";
+import { Text } from "./Text";
+import { View } from "./View";
 import { useTheme } from "../hooks/useTheme";
-import { Icon } from "../components/Icon";
+import { Icon } from "./Icon";
 
-export type SettingsLink = {
-  icon: any;
+export type ListItemProps = {
+  icon?: any;
+  iconColor?: string;
   label: string;
   value?: string;
   onPress: () => void;
 };
 
-export function SettingsLink(props: SettingsLink) {
+export function ListItem(props: ListItemProps) {
+  const { iconColor } = props;
   const { applyThemeColor } = useTheme();
   const backgroundColor = applyThemeColor({}, "background");
-  const altBackgroundColor = applyThemeColor({}, "altBackground");
   return (
-    <View style={{ paddingBottom: 6 }}>
+    <View>
       <TouchableHighlight
         onPress={props.onPress}
         style={styles.highlight}
-        activeOpacity={0.6}
+        activeOpacity={0.9}
         underlayColor={backgroundColor}
       >
         <View style={styles.container}>
@@ -29,7 +30,7 @@ export function SettingsLink(props: SettingsLink) {
             <Icon
               name={props.icon}
               size="xl"
-              color="#999"
+              color={iconColor || "#999"}
               style={{ paddingRight: 10 }}
             />
             <Text size="lg">{props.label}</Text>
@@ -46,7 +47,8 @@ export function SettingsLink(props: SettingsLink) {
 
 const styles = StyleSheet.create({
   highlight: {
-    padding: 6,
+    padding: 10,
+    paddingVertical: 14,
     borderRadius: 10,
   },
   container: {

@@ -1,39 +1,30 @@
 import * as React from "react";
 import { TouchableOpacity, StyleSheet, View } from "react-native";
 import { useTheme } from "../hooks/useTheme";
-import type { ThemeProps } from "../types";
 import { Text } from "../components/Text";
 import { Icon } from "../components/Icon";
 
-export type AddButtonProps = ThemeProps & {
+export type AddButtonProps = {
   onPress: () => void;
   title: string;
   style?: any;
 };
-export function AddButton({
-  lightColor,
-  darkColor,
-  style,
-  onPress,
-  title,
-}: AddButtonProps) {
-  const { applyThemeColor } = useTheme();
-
-  const backgroundColor = applyThemeColor(
-    { light: lightColor, dark: darkColor },
-    "background"
-  );
-
-  const color = applyThemeColor({}, "text");
+export function AddButton({ style, onPress, title }: AddButtonProps) {
+  const { theme } = useTheme();
 
   return (
     <TouchableOpacity
-      style={[styles.button, { backgroundColor }]}
+      style={[styles.button, { backgroundColor: theme.background }]}
       onPress={onPress}
     >
       <View style={[styles.flex, style]}>
         <Text size="sm">{title}</Text>
-        <Icon name="plus" size="sm" color={color} style={{ marginLeft: 4 }} />
+        <Icon
+          name="plus"
+          size="sm"
+          color={theme.text}
+          style={{ marginLeft: 4 }}
+        />
       </View>
     </TouchableOpacity>
   );

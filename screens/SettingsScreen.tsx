@@ -1,25 +1,25 @@
 import * as React from "react";
-import { StyleSheet } from "react-native";
-import { Text } from "../components/Text";
+import { Layout } from "../components/Layout";
 import { View } from "../components/View";
 import { CalendarsSettings } from "../components/CalendarsSettings";
-import { Layout } from "../components/Layout";
-import { Switch, useColorScheme } from "react-native";
+import { ListItem } from "../components/ListItem";
+import { useTheme } from "../hooks/useTheme";
 
-export default function SettingsScreen() {
-  const [darkMode, setDarkMode] = React.useState(false);
+export default function SettingsScreen({ navigation }: any) {
+  const { theme } = useTheme();
   return (
     <Layout>
-      <View>
-        <Text>Settings</Text>
-
-        <Text>Dark Mode</Text>
-
-        <Switch
-          value={darkMode}
-          onValueChange={(value) => setDarkMode(value)}
-        />
-      </View>
+      <ListItem
+        label="Theme"
+        icon="palette"
+        iconColor={theme.primary}
+        onPress={() => navigation.navigate("ThemeSettingsScreen")}
+      />
+      <ListItem
+        label="Calendars"
+        icon="calendar-alt"
+        onPress={() => navigation.navigate("ThemeSettingsScreen")}
+      />
     </Layout>
   );
 }

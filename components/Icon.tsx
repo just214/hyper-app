@@ -8,6 +8,7 @@ const sizeMap = {
   md: 12,
   lg: 14,
   xl: 20,
+  xxl: 26,
 };
 
 export type IconProps = {

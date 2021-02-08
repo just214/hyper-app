@@ -1,7 +1,7 @@
 import * as React from "react";
 import { StyleSheet } from "react-native";
 import { View } from "../components/View";
-import { AddBlockButton } from "./AddBlockButton";
+import { Fab } from "./Fab";
 
 export type LayoutProps = {
   children: React.ReactNode;
@@ -12,7 +12,7 @@ export const Layout = (props: LayoutProps) => {
   return (
     <View style={styles.container}>
       {children}
-      <AddBlockButton />
+      <Fab />
     </View>
   );
 };

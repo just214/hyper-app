@@ -1,10 +1,12 @@
 import React from "react";
 import { StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { View } from "../components/View";
-import { Icon } from "../components/Icon";
+import { View } from "./View";
+import { Icon } from "./Icon";
+import { useTheme } from "../hooks/useTheme";
 
-export const AddBlockButton = (props: any) => {
+export const Fab = () => {
+  const { theme } = useTheme();
   const navigation = useNavigation();
   return (
     <TouchableWithoutFeedback
@@ -19,7 +21,7 @@ export const AddBlockButton = (props: any) => {
         top: 50,
       }}
     >
-      <View style={styles.button}>
+      <View style={[styles.button, { backgroundColor: theme.primary }]}>
         <Icon name="plus" size="xl" color="white" />
       </View>
     </TouchableWithoutFeedback>
@@ -31,7 +33,6 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#2f95dc",
     position: "absolute",
     textAlign: "center",
     bottom: 30,

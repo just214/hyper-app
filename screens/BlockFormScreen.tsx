@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import { View } from "../components/View";
 import { Card } from "../components/Card";
-import { SettingsLink } from "../components/SettingsLink";
+import { ListItem } from "../components/ListItem";
 import { useForm } from "react-hook-form";
 import { AddButton } from "../components/AddButton";
 import { TimerForm } from "../components/form/TimerForm";
@@ -16,6 +16,7 @@ import { TextInputControl } from "../components/form/TextInputControl";
 import { Icon } from "../components/Icon";
 import { Text } from "../components/Text";
 import { padNumber } from "../utils";
+import { useStoreActions } from "../store";
 
 function generateTimerValue(hours: number, minutes: number) {
   if (!hours && !minutes) {
@@ -28,7 +29,7 @@ function generateTimerValue(hours: number, minutes: number) {
 }
 
 export function BlockFormScreen({ navigation }: any) {
-  // const createBlock = useStoreActions((actions) => actions.createBlock);
+  const createBlock = useStoreActions((actions) => actions.createBlock);
   const { control, handleSubmit, errors, getValues, watch } = useForm();
 
   const [activeOption, setActiveOption] = React.useState<
@@ -44,8 +45,7 @@ export function BlockFormScreen({ navigation }: any) {
   }, [activeOption]);
 
   function onSubmit(values: any) {
-    console.log("VALUES", values);
-    // createBlock(values);
+    createBlock(values);
   }
 
   return (
@@ -89,7 +89,7 @@ export function BlockFormScreen({ navigation }: any) {
               />
             )}
 
-            {/* <Button title="Submit" onPress={handleSubmit(onSubmit)} /> */}
+            <Button title="Submit" onPress={handleSubmit(onSubmit)} />
 
             <View
               style={{
@@ -115,25 +115,25 @@ export function BlockFormScreen({ navigation }: any) {
             }}
           >
             <View style={{ flex: 1, display: showSettings ? "none" : "flex" }}>
-              <SettingsLink
+              <ListItem
                 onPress={() => setActiveOption("timer")}
                 icon="stopwatch"
                 label="Set Timer"
                 value={generateTimerValue(timer_hours, timer_minutes)}
               />
 
-              <SettingsLink
+              <ListItem
                 onPress={() => setActiveOption("duedate")}
                 icon="calendar-day"
                 label="Set Due Date"
               />
 
-              <SettingsLink
+              <ListItem
                 onPress={() => setActiveOption("reminder")}
                 icon="bell"
                 label="Set Reminder"
               />
-              <SettingsLink
+              <ListItem
                 onPress={() => setActiveOption("automate")}
                 icon="robot"
                 label="Automate this Block"
