@@ -1,6 +1,6 @@
 // https://easy-peasy.now.sh/docs/tutorials/typescript.html#typing-the-hooks
 import { createTypedHooks } from "easy-peasy";
-import { StoreModel } from ".";
+import { StoreModel } from "./store";
 
 const typedHooks = createTypedHooks<StoreModel>();
 
