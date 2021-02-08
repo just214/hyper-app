@@ -1,8 +1,28 @@
+enum ThemePreference {
+  ID
+  SYSTEM
+  LIGHT
+  DARK
+}
+
+type UserProfile @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  authID: ID!
+  theme_preference: ThemePreference
+  show_calendar_events: Boolean
+  calendarIDs: [String]
+  primary_color_preference: String
+}
+
 type Block @model @auth(rules: [{allow: public}]) {
   id: ID!
   title: String!
   notes: String
   url: AWSURL
-  userID: ID
+  authID: ID
+  timer_hours: Int
+  timer_minutes: Int
+  due_date: AWSDate
+  due_time: AWSTime
 }
  

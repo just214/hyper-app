@@ -25,6 +25,7 @@ export type InsightsParamList = {
 
 export type SettingsParamList = {
   SettingsScreen: undefined;
+  ThemeSettingsScreen: undefined;
 };
 
 type DayOfTheWeek = "Monday" | "Tuesday";
