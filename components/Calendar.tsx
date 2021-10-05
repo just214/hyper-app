@@ -3,28 +3,32 @@ import * as React from "react";
 import { Text } from "./Text";
 import { View } from "react-native";
 import { Control, Controller } from "react-hook-form";
-import { Calendar as DefaultCalendar } from "react-native-calendars";
+import { CalendarList as DefaultCalendar } from "react-native-calendars";
 import { useDimensions } from "../hooks/useDimensions";
 import { useTheme } from "../hooks/useTheme";
 
 export type DueDateTimeFormProps = {
   control?: Control;
   onDayPress: (value: any) => void;
+  selectedDay: any;
 };
 
 export function Calendar(props: DueDateTimeFormProps) {
   const { theme } = useTheme();
-  const { onDayPress } = props;
+  const { onDayPress, selectedDay } = props;
+
   const { window } = useDimensions();
   return (
     <View style={{ marginTop: 10 }}>
       <DefaultCalendar
         onDayPress={onDayPress}
-        current="2021-06-01"
+        pastScrollRange={0}
+        current={new Date()}
         style={{ width: window.width - 40 }}
         enableSwipeMonths={true}
         markedDates={{
-          "2021-02-12": {
+          [selectedDay]: {
+            // @ts-ignore
             selected: true,
             // marked: true,
             // selectedColor: theme.primary,
@@ -39,16 +43,16 @@ export function Calendar(props: DueDateTimeFormProps) {
           selectedDayTextColor: "#ffffff",
           todayTextColor: theme.primary,
           dayTextColor: theme.text,
-          textDisabledColor: "#d9e1e8",
+          textDisabledColor: "red",
           dotColor: theme.primary,
           selectedDotColor: "#ffffff",
           arrowColor: "#ccc",
           // disabledArrowColor: "#d9e1e8",
           monthTextColor: theme.primary,
           indicatorColor: theme.primary,
-          textDayFontFamily: "monospace",
-          textMonthFontFamily: "monospace",
-          textDayHeaderFontFamily: "monospace",
+          // textDayFontFamily: "monospace",
+          // textMonthFontFamily: "monospace",
+          // textDayHeaderFontFamily: "monospace",
           textDayFontWeight: "300",
           textMonthFontWeight: "bold",
           textDayHeaderFontWeight: "300",

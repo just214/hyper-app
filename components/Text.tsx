@@ -19,7 +19,7 @@ export function Text(props: TextProps) {
   const { style, lightColor, darkColor, size = "md", ...otherProps } = props;
   const { applyThemeColor } = useTheme();
   const color = applyThemeColor({ light: lightColor, dark: darkColor }, "text");
-  console.log("COLOR", color);
+
   const fontSize = sizeMap[size];
 
   return (

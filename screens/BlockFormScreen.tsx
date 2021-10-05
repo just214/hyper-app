@@ -148,8 +148,15 @@ export function BlockFormScreen({ navigation }: any) {
                 }}
               >
                 <TouchableOpacity onPress={() => setActiveOption(null)}>
-                  <View style={{ flexDirection: "row" }}>
-                    <Icon name="angle-left" />
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      backgroundColor: "yellow",
+                      padding: 20,
+                      alignItems: "center",
+                    }}
+                  >
+                    <Icon name="angle-left" style={{ marginRight: 10 }} />
                     <Text>Back</Text>
                   </View>
                 </TouchableOpacity>
@@ -173,7 +180,7 @@ export function BlockFormScreen({ navigation }: any) {
                   height: activeOption === "duedate" ? "100%" : 0,
                 }}
               >
-                <DueDateTimeForm />
+                <DueDateTimeForm control={control} />
               </View>
             </View>
           </Card>
